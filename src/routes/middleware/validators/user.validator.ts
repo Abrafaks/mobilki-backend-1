@@ -10,13 +10,15 @@ const password = body("password")
   );
 const passwordOptional = password.optional();
 
+const note = body("note").optional();
+
 export class UserValidator {
   public validateUser(): ValidationChain[] {
-    return [login, password];
+    return [login, password, note];
   }
 
   public validateUpdateUser(): ValidationChain[] {
-    return [loginOptional, passwordOptional];
+    return [loginOptional, passwordOptional, note];
   }
 }
 

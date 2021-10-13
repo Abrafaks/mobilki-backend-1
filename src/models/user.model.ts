@@ -1,15 +1,12 @@
 import { Document, Schema, model } from "mongoose";
-
-export interface User {
-  login: string;
-  passwordHash: string;
-}
+import { User } from "../dto/user.dto";
 
 export interface UserDocument extends User, Document {}
 
 const userSchema = new Schema<User>({
   login: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
+  note: { type: String },
 });
 
 userSchema.methods.toJSON = function () {

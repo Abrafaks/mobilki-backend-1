@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import helmet from "helmet";
 import passport from "passport";
+import ip from "ip";
 import routes from "./routes/routes";
 
 const app = express();
@@ -18,4 +19,5 @@ app.use(routes);
 
 app.listen(process.env.PORT, () => {
   console.log("Server started on port " + process.env.PORT);
+  console.log(ip.address());
 });

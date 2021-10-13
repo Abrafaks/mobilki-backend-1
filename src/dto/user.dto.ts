@@ -1,21 +1,25 @@
 export interface User {
   login: string;
   passwordHash: string;
+  note?: string;
 }
 
 export interface addUser {
   login: string;
   password: string;
+  note?: string;
 }
 
 export interface updateUser {
   login?: string;
   password?: string;
+  note?: string;
 }
 
 export interface updateUserData {
   login?: string;
   passwordHash?: string;
+  note?: string;
 }
 
 export interface UserDboTemplate {

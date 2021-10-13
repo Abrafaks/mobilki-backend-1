@@ -11,6 +11,8 @@ export class UserController {
     try {
       const { login, password } = matchedData(req);
 
+      console.log("register - user controller");
+
       const existingUser = await this.userService.getUserByLogin(login);
 
       if (existingUser) {
