@@ -19,6 +19,10 @@ export class UserService {
     return this.userDbo.getUserByLogin(login);
   }
 
+  getUserById(id: string): Promise<User | null> {
+    return this.userDbo.getUserById(id);
+  }
+
   async addUser({ login, password }: addUser): Promise<User> {
     const passwordHash = await this.authService.hashPassword(password);
 

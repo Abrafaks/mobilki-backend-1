@@ -6,6 +6,12 @@ import { auth, Strategy } from "./middleware/strategies/auth";
 
 const router = express.Router();
 
+router.get(
+  "/",
+  auth.authenticate([Strategy.Bearer]),
+  (req: Request, res: Response) => userController.getUser(req, res)
+);
+
 router.post(
   "/",
   userValidator.validateUser(),

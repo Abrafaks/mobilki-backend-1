@@ -32,10 +32,21 @@ export class UserController {
   async update(req: Request, res: Response): Promise<Response> {
     const { _id } = req.user!;
     const updateData: updateUser = matchedData(req);
-
+    console.log("updated");
     return res
       .status(StatusCodes.OK)
       .send(await this.userService.updateUser(_id, updateData));
+  }
+
+  async getUser(req: Request, res: Response): Promise<Response> {
+    const { _id } = req.user!;
+    const user = await userService.getUserById(_id);
+
+    if (!user) {
+      return res.sendStatus(400);
+    }
+
+    return res.status(200).send(user);
   }
 }
 
