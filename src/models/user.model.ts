@@ -6,7 +6,11 @@ export interface UserDocument extends User, Document {}
 const userSchema = new Schema<User>({
   login: { type: String, required: true, unique: true },
   passwordHash: { type: String, required: true },
-  note: { type: String },
+  note: {
+    enc: { type: String },
+    iv: { type: Buffer },
+    authTag: { type: Buffer },
+  },
 });
 
 userSchema.methods.toJSON = function () {

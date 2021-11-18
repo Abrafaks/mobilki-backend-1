@@ -1,4 +1,4 @@
-import { UserDboTemplate, User, updateUser } from "../dto/user.dto";
+import { UserDboTemplate, User, updateUserData } from "../dto/user.dto";
 import UserModel from "../models/user.model";
 
 export class UserMongoDbo implements UserDboTemplate {
@@ -14,7 +14,7 @@ export class UserMongoDbo implements UserDboTemplate {
     return UserModel.findById(_id);
   }
 
-  async updateUser(_id: string, data: updateUser): Promise<User> {
+  async updateUser(_id: string, data: updateUserData): Promise<User> {
     await UserModel.updateOne({ _id }, data);
     // @ts-ignore
     return this.getUserById(_id);

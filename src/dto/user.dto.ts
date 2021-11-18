@@ -1,7 +1,11 @@
 export interface User {
   login: string;
   passwordHash: string;
-  note?: string;
+  note?: {
+    enc: string;
+    iv: Buffer;
+    authTag: Buffer;
+  };
 }
 
 export interface addUser {
@@ -19,12 +23,16 @@ export interface updateUser {
 export interface updateUserData {
   login?: string;
   passwordHash?: string;
-  note?: string;
+  note?: {
+    enc: string;
+    iv: Buffer;
+    authTag: Buffer;
+  };
 }
 
 export interface UserDboTemplate {
   getUserByLogin(login: string): Promise<User | null>;
   getUserById(_id: string): Promise<User | null>;
   addUser(data: User): Promise<User>;
-  updateUser(_id: string, data: updateUser): Promise<User>;
+  updateUser(_id: string, data: updateUserData): Promise<User>;
 }

@@ -46,6 +46,7 @@ export class UserController {
       return res.sendStatus(400);
     }
 
+    console.log(user);
     return res.status(200).send(user);
   }
 }
